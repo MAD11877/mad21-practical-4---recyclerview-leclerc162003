@@ -1,7 +1,6 @@
 package sg.edu.np.practical2;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,12 +8,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import java.util.ArrayList;
-import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
     //Intent receive = getIntent();
@@ -37,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         this.cl.setText(user.getDescription());
 
 
-        Button button = (Button) findViewById(R.id.follow);
+        Button button = (Button) findViewById(R.id.btnFollow);
 
 
         button.setOnClickListener(new View.OnClickListener() {
