@@ -47,4 +47,11 @@ jobs:
           api-level: 29
           ndk: 21.0.6113669
           cmake: 3.10.2.4988404
-          script: ./gradlew connectedAndroidTest    
+          script: ./gradlew connectedAndroidTest --stacktrace
+          
+      - name: Tests results
+        uses: actions/upload-artifact@v1
+        with:
+          name: unit-tests-results
+          path: app/build/reports/tests/testDebugUnitTest/index.html
+          
