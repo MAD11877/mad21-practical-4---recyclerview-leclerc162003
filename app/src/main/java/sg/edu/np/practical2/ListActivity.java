@@ -10,16 +10,18 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class ListActivity extends AppCompatActivity{
+    public static ArrayList<User> data = new ArrayList<User>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
 
-        ArrayList<User> data = new ArrayList<User>();
+
         for (int i=0 ; i<20; i++){
             User u = new User();
             Random rand = new Random();
             String txt = String.valueOf(rand.nextInt());
+            u.setId(rand.nextInt());
             u.setName("Name" + txt);
             u.setDescription("Description" + txt);
             data.add(u);

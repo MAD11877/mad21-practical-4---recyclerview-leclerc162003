@@ -26,38 +26,48 @@ public class MainActivity extends AppCompatActivity {
         this.cl = findViewById(R.id.cl);
         Intent receive = getIntent();
 //
-        User user = new User(receive.getStringExtra("Name"), receive.getStringExtra("Des"), 1, false);
+        //User user = new User(receive.getStringExtra("Name"), receive.getStringExtra("Des"), 1, false);
+        int id = getIntent().getIntExtra("id",0);
+        User user = ListActivity.data.get(id);
 
         this.textBiew.setText(user.getName() );
         this.cl.setText(user.getDescription());
 
 
         Button button = (Button) findViewById(R.id.btnFollow);
+        if(user.followed == false)
+        {
+            button.setText("Follow");
+        }
+        else
+        {
+            button.setText("Unfollow");
+        }
 
 
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //int status = (Integer) v.getTag();
-                if (user.followed == true){
-                    Context context = getApplicationContext();
-                    CharSequence text = "Followed";
-                    int duration = Toast.LENGTH_SHORT;
-                    Toast.makeText(context, text, duration ).show();
+        button.setOnClickListener(v -> {
+            //int status = (Integer) v.getTag();
+            if (user.followed == false){
+                Context context = getApplicationContext();
+                CharSequence text = "Unfollowed";
+                int duration = Toast.LENGTH_SHORT;
+                Toast.makeText(context, text, duration ).show();
 
-                    button.setText("Unfollow");
-                    user.setFollowed(false);
-                }
-                else{
-                    Context context = getApplicationContext();
-                    CharSequence text = "Unfollowed";
-                    int duration = Toast.LENGTH_SHORT;
-                    Toast.makeText(context, text, duration ).show();
-                    button.setText("follow");
-                    user.setFollowed(true);
-                }
+                button.setText("Unfollow");
+                Log.d("debug", "Unfollowed");
+
+                user.setFollowed(true);
             }
+            else{
+                Context context = getApplicationContext();
+                CharSequence text = "Followed";
+                int duration = Toast.LENGTH_SHORT;
+                Toast.makeText(context, text, duration ).show();
+                button.setText("Follow");
+                Log.d("debug", "Followed");
 
+                user.setFollowed(false);
+            }
         });
 //        ArrayList<User> data = new ArrayList<User>();
 //        for (int i=0 ; i<20; i++){

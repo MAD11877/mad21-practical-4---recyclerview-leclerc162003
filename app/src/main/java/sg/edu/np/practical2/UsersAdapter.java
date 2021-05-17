@@ -59,6 +59,8 @@ public class UsersAdapter extends RecyclerView.Adapter<UserViewHolder> {
                         Bundle extras = new Bundle();
                         extras.putString("Name", u.getName());
                         extras.putString("Des", u.getDescription());
+                        String string = String.valueOf(u.getId());
+                        extras.putString("id", string);
                         i.putExtras(extras);
                         context.startActivity(i);
 
